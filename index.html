@@ -29,7 +29,7 @@
 
               // Get realtime updates on a datastream  
 				xively.datastream.subscribe( feedID, datastreamID , function( event, feedData ) {  
-  				console.log( feedData ); // Logs value changes in realtime  
+  				console.log( feedData.current_value ); // Logs value changes in realtime  
 			});  
 
             // var w = "100%";
