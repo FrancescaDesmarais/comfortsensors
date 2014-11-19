@@ -3,41 +3,94 @@
     <head>
         <meta charset="utf-8">
         <title>D3 Test</title>
+        <script type="text/javascript" src="d3/d3.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>  
         <script src="http://d23cj0cdvyoxg0.cloudfront.net/xivelyjs-1.0.4.min.js"></script>  
 
     </head>
     <body>
 
-	<script>
-        // Make sure the document is ready to be handled  
-$(document).ready(function($) {  
-  
-  // Set the Xively API key (https://xively.com/users/YOUR_USERNAME/keys)  
-  xively.setKey( "uCA0a9vzrVzWqS9hQUbSGbSfVkVlvReYpoQ6X7TSuOGVxLKl" );  
-  
-  // Replace with your own values  
-  var feedID        = 1003959696,          // Feed ID  
-      datastreamID  = "ComfortSensors";       // Datastream ID  
+        <script>
+            
+            // DATA    
 
-  
-  // Get datastream data from Xively  
-  xively.datastream.get (feedID, datastreamID, function ( datastream ) {  
-    // WARNING: This code is only executed when we get a response back from Xively,   
-    // it will likely execute after the rest your script  
-    //  
-    // NOTE: The variable "datastream" will contain all the Datastream information   
-    // as an object. The structure of Datastream objects can be found at:   
-    // https://xively.com/dev/docs/api/quick_reference/api_resource_attributes/#datastream  
-  
-    // Display the current value from the datastream  
-    console.log( datastream["current_value"] );  
-  
-    });  
-  
-  });  
-  
+            // Set the Xively API key (https://xively.com/users/YOUR_USERNAME/keys)  
+              xively.setKey( "YxVUHi6B2pyLbBoyjkhvQT7nHjtsbQ16iQ2hMZlcqHAj8zPD" );  
+              
+              // Replace with your own values  
+              var feedID        = 1003959696,          // Feed ID  
+                  datastreamID  = "ComfortSensors";       // Datastream ID   
+              
+              // Get feed content  
+				xively.feed.get( feedID, function( feedData ) {  
+  				console.log( feedData.title ); // Logs the feed title  
+				}); 
+
+
+              // Get realtime updates on a datastream  
+				xively.datastream.subscribe( feedID, datastreamID , function( event, feedData ) {  
+  				console.log( feedData ); // Logs value changes in realtime  
+			});  
+
+            // var w = "100%";
+            // var h = 1100;
+            // var sensorR = "20%";
+            // var fillA = 0.75;
+
+            // var tempColor = d3.scale.linear()
+            //                         .domain([0,40])
+            //                         .rangeRound([160,360]);
+
+            // var rhColor = d3.scale.linear()
+            //                         .domain([0,100])
+            //                         .rangeRound([40,50]);
+
+            // var tempColorH = function(d) {
+            //     return tempColor(d.temp);
+            // }
+
+            // var rhColorL = function(d) {
+            //     return rhColor(d.rh) + "%";
+            // }
+
+            // var svg = d3.select("body")
+            //                 .append("svg")
+            //                 .attr("width",w)
+            //                 .attr("height",h);
+
+            // var circles;
+
+            // setInterval(drawCircles, 1200);
+
+            // function drawCircles() {
+
+            //     circles = svg.selectAll("circle")
+            //                     .data(jsonSensors)
+            //                     .enter()
+            //                     .append("circle");
+
+            //     colorChange = function(d) {
+            //         d3.select(this)
+            //         .transition()
+            //         .duration(5000)
+            //         .attr("fill", "hsla(" + tempColorH(d) + ",100%," + rhColorL(d) + "," + fillA +")")
+            //         .attr("stroke-width","50")
+            //         .each("end",colorChange );
+            //     }               
+
+            //     circles.attr("cx", function(d) {
+            //                 return d.locX;
+            //             })
+            //             .attr("cy", function(d) {
+            //                 return d.locY;
+            //             })
+            //             .attr("r", sensorR)
+            //             .transition()
+            //             .duration(5000)
+            //             .each("end",colorChange);
+            // }
+
         </script>
-        
+
     </body>
 </html>  
