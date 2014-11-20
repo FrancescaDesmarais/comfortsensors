@@ -113,32 +113,32 @@
 								$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .datastream-name').html(datastream.id);
 								$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .datastream-value').html(datastream.current_value);
 
-								// // Include Datastream Unit (If Available)
-								// if(datastream.unit) {
-								// 	if(datastream.unit.symbol) {
-								// 		$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .datastream-value').html(datastream.current_value + datastream.unit.symbol);
-								// 	} else {
-								// 		$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .datastream-value').html(datastream.current_value);
-								// 	}
-								// } else {
-								// 	$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .datastream-value').html(datastream.current_value);
-								// }
-								// $('.datastream-' + datastream.id).removeClass('hidden');
+								// Include Datastream Unit (If Available)
+								if(datastream.unit) {
+									if(datastream.unit.symbol) {
+										$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .datastream-value').html(datastream.current_value + datastream.unit.symbol);
+									} else {
+										$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .datastream-value').html(datastream.current_value);
+									}
+								} else {
+									$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .datastream-value').html(datastream.current_value);
+								}
+								$('.datastream-' + datastream.id).removeClass('hidden');
 
-								// // Historical Datapoints
-								// if(datastreamData.datapoints) {
+								// Historical Datapoints
+								if(datastreamData.datapoints) {
 
-								// 	// Add Each Datapoint to Array
-								// 	datastreamData.datapoints.forEach(function(datapoint) {
-								// 		points.push({x: new Date(datapoint.at).getTime()/1000.0, y: parseFloat(datapoint.value)});
-								// 	});
+									// Add Each Datapoint to Array
+									datastreamData.datapoints.forEach(function(datapoint) {
+										points.push({x: new Date(datapoint.at).getTime()/1000.0, y: parseFloat(datapoint.value)});
+									});
 
-								// 	// Add Datapoints Array to Graph Series Array
-								// 	series.push({
-								// 		name: datastream.id,
-								// 		data: points,
-								// 		color: '#' + dataColor
-								// 	});
+									// Add Datapoints Array to Graph Series Array
+									series.push({
+										name: datastream.id,
+										data: points,
+										color: '#' + dataColor
+									});
 
 									// Initialize Graph DOM Element
 									$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .graph').attr('id', 'graph-' + feedId + '-' + datastream.id);
@@ -162,38 +162,38 @@
 
 									graph.render();
 
-									//var ticksTreatment = 'glow';
+									var ticksTreatment = 'glow';
 
-									// // Define and Render X Axis (Time Values)
-									// var xAxis = new Rickshaw.Graph.Axis.Time( {
-									// 	graph: graph,
-									// 	ticksTreatment: ticksTreatment
-									// });
-									// xAxis.render();
+									// Define and Render X Axis (Time Values)
+									var xAxis = new Rickshaw.Graph.Axis.Time( {
+										graph: graph,
+										ticksTreatment: ticksTreatment
+									});
+									xAxis.render();
 
-									// // Define and Render Y Axis (Datastream Values)
-									// var yAxis = new Rickshaw.Graph.Axis.Y( {
-									// 	graph: graph,
-									// 	tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-									// 	ticksTreatment: ticksTreatment
-									// });
-									// yAxis.render();
+									// Define and Render Y Axis (Datastream Values)
+									var yAxis = new Rickshaw.Graph.Axis.Y( {
+										graph: graph,
+										tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+										ticksTreatment: ticksTreatment
+									});
+									yAxis.render();
 
-									// // Enable Datapoint Hover Values
-									// var hoverDetail = new Rickshaw.Graph.HoverDetail({
-									// 	graph: graph,
-									// 	formatter: function(series, x, y) {
-									// 		var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + ' padding: 4px;"></span>';
-									// 		var content = swatch + "&nbsp;&nbsp;" + parseFloat(y) + '&nbsp;&nbsp;<br>';
-									// 		return content;
-									// 	}
-									// });
+									// Enable Datapoint Hover Values
+									var hoverDetail = new Rickshaw.Graph.HoverDetail({
+										graph: graph,
+										formatter: function(series, x, y) {
+											var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + ' padding: 4px;"></span>';
+											var content = swatch + "&nbsp;&nbsp;" + parseFloat(y) + '&nbsp;&nbsp;<br>';
+											return content;
+										}
+									});
 
-									// $('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .slider').prop('id', 'slider-' + feedId + '-' + datastream.id);
-									// var slider = new Rickshaw.Graph.RangeSlider({
-	        //     	   					graph: graph,
-	        // 	       					element: $('#slider-' + feedId + '-' + datastream.id)
-	        //        					});
+									$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .slider').prop('id', 'slider-' + feedId + '-' + datastream.id);
+									var slider = new Rickshaw.Graph.RangeSlider({
+	            	   					graph: graph,
+	        	       					element: $('#slider-' + feedId + '-' + datastream.id)
+	               					});
 								} else {
 									$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .graphWrapper').addClass('hidden');
 								}
