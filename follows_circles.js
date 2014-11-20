@@ -189,11 +189,11 @@
 									// 	}
 									// });
 
-									// $('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .slider').prop('id', 'slider-' + feedId + '-' + datastream.id);
-									// var slider = new Rickshaw.Graph.RangeSlider({
-	        //     	   					graph: graph,
-	        // 	       					element: $('#slider-' + feedId + '-' + datastream.id)
-	        //        					});
+									$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .slider').prop('id', 'slider-' + feedId + '-' + datastream.id);
+									var slider = new Rickshaw.Graph.RangeSlider({
+	            	   					graph: graph,
+	        	       					element: $('#slider-' + feedId + '-' + datastream.id)
+	               					});
 								} else {
 									$('#feed-' + feedId + ' .datastreams .datastream-' + datastream.id + ' .graphWrapper').addClass('hidden');
 								}
