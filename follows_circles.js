@@ -69,6 +69,8 @@
 		xively.setKey(key);
 	}
 
+	setInterval(updateFeeds, 100);
+
 	function updateFeeds(feedId, datastreamIds, duration, interval) {
 		xively.feed.get(feedId, function(feedData) {
 			if(feedData.datastreams) {
