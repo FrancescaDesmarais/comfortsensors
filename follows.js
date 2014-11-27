@@ -12,9 +12,9 @@
 		hideForm		= 0;
 	*/
 
-	var defaultKey		= 'YxVUHi6B2pyLbBoyjkhvQT7nHjtsbQ16iQ2hMZlcqHAj8zPD', // Unique master Xively API key to be used as a default
-		defaultFeeds	= [1003959696], // Comma separated array of Xively Feed ID numbers
-		applicationName	= 'ComfortSensors', // Replaces Xively logo in the header
+	var defaultKey		= 'tUd6SG9Vdbo6DYadml0yrfV9gib5kqD4DUC8mv1LCqKoUBJr', // Unique master Xively API key to be used as a default
+		defaultFeeds	= [1111960844], // Comma separated array of Xively Feed ID numbers
+		applicationName	= 'IndoorClimate', // Replaces Xively logo in the header
 		dataDuration	= '', // Default duration of data to be displayed // ref: https://xively.com/dev/docs/api/data/read/historical_data/
 		dataInterval	= 0, // Default interval for data to be displayed (in seconds)
 		dataColor		= '', // CSS HEX value of color to represent data (omit leading #)
